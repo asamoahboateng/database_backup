@@ -69,18 +69,16 @@ for x in myresult:
 
     
     fileData = data2
-    #fileData = {"type":"table","name":tableName,"database":dbName,"data": data2}
     
     with open(file_name,'w+') as outfile:
-        json.dump(fileData, outfile)
+        json.dump(fileData, outfile, sort_keys=True, indent=4)
 
 #zipping folder
 zipfoldername = folder_name+'_'+ today.strftime("%d_%m_%Y")
 print('|>> Zipping Folder')
 shutil.make_archive(zipfoldername, 'zip', './'+folder_name)
 
-
-time.sleep(5)
+#deleting folder
 print('|>> Deleting Folder')
 shutil.rmtree('./'+folder_name, ignore_errors=True)
 
